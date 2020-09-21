@@ -1,0 +1,17 @@
+{
+  "name": "pantherbot",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node -r esm src/main.js"
+  },
+  "keywords": [
+    "PantherBot",
+    "GSUGuide21"
+  ],
+  "author": "GSUGuide21",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {},
+  "description": ""
+}
