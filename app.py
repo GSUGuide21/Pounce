@@ -2,24 +2,23 @@ import os
 import sys
 import re
 import json
-
 import importlib.util
-
+from flask import Flask, request
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-from flask import Flask, request
-
-import logic
+class PounceException(Exception):
+	pass
 
 app = Flask(__name__)
 
 @app.route("/", methods=["POST"])
 def webhook():
 	data = request.get_json()
-
+	print(data)
 	if data["name"] != "Pounce":
 		msg = logic.respond(data)
+		print(msg)
 		send_message(msg)
 	
 	return "ok", 200
@@ -32,9 +31,14 @@ def send_message(msg):
 		"text": msg
 	}
 
+	print(data)
+
 	request = Request(url, urlencode(data).encode())
 	json = urlopen(request).read().decode()
 
 def log(msg):
 	print(str(msg))
 	sys.stdout.flush()
+
+if __name__ == "__main__":
+	app.run(debug=True)
