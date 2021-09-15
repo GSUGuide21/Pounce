@@ -35,6 +35,7 @@ def send_message(msg):
 
 	request = Request(url, urlencode(data).encode())
 	json = urlopen(request).read().decode()
+	print(json)
 
 def log(msg):
 	print(str(msg))
